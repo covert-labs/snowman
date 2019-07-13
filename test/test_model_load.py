@@ -18,7 +18,7 @@ class TestModelLoad(unittest.TestCase):
 
 		for test_string in self.test_strings:
 			prediction = model.predict(test_string)
-			print "Score for test string [" + test_string + "] is: " + str(prediction)
+			print("Score for test string [" + test_string + "] is: " + str(prediction))
 			self.assertTrue( prediction > 0 and prediction < 1)
 
 if __name__ == '__main__':

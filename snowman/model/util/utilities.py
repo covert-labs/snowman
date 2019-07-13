@@ -1,6 +1,17 @@
 import numpy as np
 from tensorflow.keras.preprocessing.text import one_hot
 from tensorflow.keras.preprocessing.sequence import pad_sequences 
+import tldextract
+
+def strip_tld(domain):
+    if domain.startswith('.'):
+        domain = domain[1:]
+
+    e = tldextract.extract(domain)
+    if e.subdomain:
+        return e.subdomain + '.' + e.domain
+    else:
+        return e.domain
 
 class DataPrep:
     def __init__(self):
@@ -9,7 +20,7 @@ class DataPrep:
     def load_url_file(self, file_path, skip_lines=0):
         with open(file_path) as file:
             lines = file.readlines()
-        raw_url_strings = [line[:-2] for line in lines[skip_lines:]]
+        raw_url_strings = [strip_tld(line) for line in lines[skip_lines:]]
         return raw_url_strings
 
     def to_one_hot(self, input_str,max_index=256, padding_length=30):

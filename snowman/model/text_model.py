@@ -12,7 +12,7 @@ import random
 import json
 import os
 
-VERSION = "0.0.2"
+VERSION = "0.0.3"
 
 pwd  = os.path.dirname(__file__)
 
@@ -44,7 +44,7 @@ class TextModel(object):
 		self.net = text_cnn(self.prep.max_index , self.prep.max_len)
 
 		# model training
-		(X_train, X_test,Y_train,Y_test) = self.prep.train_test_split(X,Y,.5)
+		(X_train, X_test, Y_train, Y_test) = self.prep.train_test_split(X,Y,.5)
 		self.net.fit(X_train, Y_train, batch_size=128, epochs=25)
 
 		#model evaluation
