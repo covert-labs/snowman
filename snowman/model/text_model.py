@@ -1,9 +1,9 @@
 # IMPORTS
-from keras.models import Sequential, load_model
-from keras.layers import Dense, Dropout, Activation, Conv1D
-from keras.optimizers import SGD
-from keras.layers.embeddings import Embedding
-from keras.layers.pooling import GlobalMaxPooling1D
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Dense, Dropout, Activation, Conv1D
+from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.layers import Embedding
+from tensorflow.keras.layers import GlobalMaxPooling1D
 import numpy as np
 from snowman.model.util.utilities import DataPrep
 from snowman.model.text_cnn import text_cnn
@@ -51,11 +51,11 @@ class TextModel(object):
 		Y_pred = self.net.predict(X_test)
 		fpr, tpr, thresholds = roc_curve(Y_test, Y_pred)
 		auc_score = auc(fpr,tpr)
-		print "\n AUC Score: " + str(auc_score) + "\n"
+		print("\n AUC Score: " + str(auc_score) + "\n")
 
 
 	def save(self):
-		print "Saving model under directory: " + MODEL_OUTPUT_FILEPATH
+		print("Saving model under directory: " + MODEL_OUTPUT_FILEPATH)
 		if not os.path.isdir(MODEL_OUTPUT_FILEPATH):
 			os.mkdir(MODEL_OUTPUT_FILEPATH) 
 
@@ -67,10 +67,10 @@ class TextModel(object):
 
 
 	def load(self):
-		print "Loading model config from: " + MODEL_CONFIG_OUTPUT_FILEPATH 
+		print("Loading model config from: " + MODEL_CONFIG_OUTPUT_FILEPATH )
 		with open(MODEL_CONFIG_OUTPUT_FILEPATH, "r") as in_file:
 			model_configuration = json.load(in_file)
-		print "Loaded model config: " + str(model_configuration)
+		print("Loaded model config: " + str(model_configuration))
 
 		self.prep.max_len = model_configuration["max_sequence_length"]
 		self.prep.max_index = model_configuration["max_char_index"]

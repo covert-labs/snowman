@@ -1,9 +1,9 @@
 # IMPORTS
-from keras.models import Sequential, Model
-from keras.layers import Dense, Dropout, Activation, Conv1D, Input, Dense, concatenate
-from keras.optimizers import SGD
-from keras.layers.embeddings import Embedding
-from keras.layers.pooling import GlobalMaxPooling1D
+from tensorflow.keras.models import Sequential, Model
+from tensorflow.keras.layers import Dense, Dropout, Activation, Conv1D, Input, Dense, concatenate
+from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.layers import Embedding 
+from tensorflow.keras.layers import GlobalMaxPooling1D
 import numpy as np
 from snowman.model.util.utilities import DataPrep
 from sklearn.metrics import roc_curve, auc

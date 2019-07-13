@@ -1,6 +1,6 @@
 import numpy as np
-from keras.preprocessing.text import one_hot
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.text import one_hot
+from tensorflow.keras.preprocessing.sequence import pad_sequences 
 
 class DataPrep:
     def __init__(self):
@@ -36,7 +36,7 @@ class DataPrep:
         return X
         
     def shuffle(self, X,Y):
-        a = range(Y.size)
+        a = list(range(Y.size))
         np.random.shuffle(a)
 
         X = X[a]
