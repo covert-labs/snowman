@@ -1,4 +1,5 @@
 import unittest
+from snowman.model.util.utilities import strip_tld
 from snowman.model.text_model import TextModel
 
 class TestModelLoad(unittest.TestCase):
@@ -17,8 +18,8 @@ class TestModelLoad(unittest.TestCase):
 		model.load()
 
 		for test_string in self.test_strings:
-			prediction = model.predict(test_string)
-			print("Score for test string [" + test_string + "] is: " + str(prediction))
+			prediction = model.predict(strip_tld(test_string))
+			print(f"Score for test string [{test_string} (model sees: {strip_tld(test_string)})] is: {str(prediction)}")
 			self.assertTrue( prediction > 0 and prediction < 1)
 
 if __name__ == '__main__':

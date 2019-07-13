@@ -1,5 +1,6 @@
 from flask_restful import Resource, Api, reqparse
 from flask import Flask, request
+from snowman.model.util.utilities import strip_tld
 from snowman.model.text_model import TextModel
 import os
 
@@ -15,9 +16,11 @@ class ModelApi(Resource):
 
 	def put(self):
 		url = request.form['url']
-		score = model.predict(str(url))[0][0]
-		return {"input query" : url, 
-			"score" : str(score)}
+		score = model.predict(strip_tld(str(url)))[0][0]
+		return {
+			"input query" : url, 
+			"score" : str(score)
+		}
 
 api.add_resource(ModelApi,"/model")
 
