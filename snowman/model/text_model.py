@@ -12,7 +12,7 @@ import random
 import json
 import os
 
-VERSION = "0.0.3"
+VERSION = "0.0.4-dga-vs-alexa"
 
 pwd  = os.path.dirname(__file__)
 
@@ -20,8 +20,8 @@ MODEL_OUTPUT_FILEPATH = os.path.join(pwd, "../../fixtures/models/model_"+VERSION
 MODEL_WEIGHTS_OUTPUT_FILEPATH = os.path.join(pwd,"../../fixtures/models/model_"+VERSION + "/weights")
 MODEL_CONFIG_OUTPUT_FILEPATH = os.path.join(pwd,"../../fixtures/models/model_"+VERSION + "/config.json")
 
-TRAINING_DATA_BLACKLIST_FILEPATH = os.path.join(pwd, "../../fixtures/datasets/url_blacklist.txt")
-TRAINING_DATA_WHITELIST_FILEPATH = os.path.join(pwd, "../../fixtures/datasets/url_whitelist.txt")
+TRAINING_DATA_BLACKLIST_FILEPATH = os.path.join(pwd, "../../fixtures/datasets/dga_training.txt")
+TRAINING_DATA_WHITELIST_FILEPATH = os.path.join(pwd, "../../fixtures/datasets/alexa-top-500k.txt")
 
 class TextModel(object):
 	def __init__(self):

@@ -7,6 +7,9 @@ def strip_tld(domain):
     if domain.startswith('.'):
         domain = domain[1:]
 
+    if ',' in domain:
+        domain = domain.split(',')[0]
+
     e = tldextract.extract(domain)
     if e.subdomain:
         return e.subdomain + '.' + e.domain
