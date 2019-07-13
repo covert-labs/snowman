@@ -28,15 +28,19 @@ def text_cnn(max_seq_index, max_seq_length):
 
 	drop = Dropout(.2)(flattened)
 
-	dense = Dense(1)(drop)
-	out = Activation("sigmoid")(dense)
+	outputs = []
+	for x in range(89): # main output + 88 DGA families
+		dense = Dense(1)(drop)
+		out = Activation("sigmoid")(dense)
+		outputs.append(out)
 
-	model = Model(inputs=text_input, outputs=out)
+	model = Model(inputs=text_input, outputs=outputs)
 
 	model.compile(
 		loss='binary_crossentropy',
 		optimizer='rmsprop',
-		metrics=['accuracy'])
+		metrics=['accuracy']
+	)
 
 	return model
 

@@ -26,6 +26,12 @@ class DataPrep:
         raw_url_strings = [strip_tld(line) for line in lines[skip_lines:]]
         return raw_url_strings
 
+    def load_labels(self, file_path, skip_lines=0):
+        with open(file_path) as file:
+            lines = file.readlines()
+        labels = [line.split(',')[1] for line in lines[skip_lines:]]
+        return labels
+
     def to_one_hot(self, input_str,max_index=256, padding_length=30):
         """Transform single input string into zero-padded one-hot (index) encoding."""
         input_one_hot = one_hot(" ".join(list(input_str)), n = max_index)
