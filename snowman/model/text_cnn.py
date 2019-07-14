@@ -43,24 +43,3 @@ def text_cnn(max_seq_index, max_seq_length):
 	)
 
 	return model
-
-'''
-ref: https://groups.google.com/forum/#!topic/keras-users/cpXXz_qsCvA
-
-output1 = Dense(M, activation='softmax')(x) # now you create an output layer for each of your K groups. And each output has M elements, out of which because of 'softmax' only 1 will be activated. (practically this is of course a distribution, but after sufficient training, this usually makes one element close to one and the other elements close to zero)
-output2 = Dense(M, activation='softmax')(x)
-output3 = Dense(M, activation='softmax')(x)
-... #you have to fill in the remaining layers here, or better: use a for loop
-outputK = Dense(M, activation='softmax')(x)
-
-model = Model(input=inputs, output=[output1, output2, output3, ..., outputK])
-
-
-model.compile(optimizer='rmsprop',
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
-
-model.fit(inputData, [outputData1, outputData2, outputData3, ... outputDataK], nb_epochs=10, batch_size=64)
-'''
-
-
